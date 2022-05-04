@@ -21,13 +21,13 @@ This section discusses password cracking terminology from a cybersecurity perspe
 
 ## [TASK 3] Password Profiling #1 - Default, Weak, Leaked, Combined , and Username Wordlists
 #### Default passwords
-Sometimes it's good practice to use the default password to break into a service. A default password is a standard pre-configured password for a device. Such passwords are the default configuration for many devices and, if unchanged, present a serious security risk. Famous rockyou.txt comes from data breach occured in December 2009, when the company "RockYou" experienced a data breach resulting in the exposure of over 32 million user accounts. Examples: admin, 123, root. Very often the default password is found in routers and virtual machines. Website that provide default passwords: https://cirt.net/passwords
+Sometimes it's good practice to use the default password to break into a service. A default password is a standard pre-configured password for a device. Such passwords are the default configuration for many devices and, if unchanged, present a serious security risk. Examples: admin, 123, root. Very often the default password is found in routers and virtual machines. Website that provide default passwords: https://cirt.net/passwords
 
 #### Weak Passwords
 A weak password is short, common, a system default, or something that could be rapidly guessed by executing a brute force attack using a subset of all possible passwords, such as words in the dictionary, proper names, words based on the user name or common variations on these themes.
 
 #### Leaked Passwords
-Leaked password database is an aggregated collection of login credentials known to have been exposed. As new breaches and leaks occur, security researchers work to discover data breaches to add and process compromised credentials. There are many different sites where you can check for leaked passwords. https://www.avast.com/hackcheck#pc
+Leaked password database is an aggregated collection of login credentials known to have been exposed. As new breaches and leaks occur, security researchers work to discover data breaches to add and process compromised credentials. Famous rockyou.txt comes from data breach occured in December 2009, when the company "RockYou" experienced a data breach resulting in the exposure of over 32 million user accounts. There are many different sites where you can check for leaked passwords. https://www.avast.com/hackcheck#pc
 
 #### Combined wordlists
 To crack passwords, it is sometimes useful to combine word lists in a way that concatenates words from multiple lists. More information about combined wordlists in the article - https://www.sjoerdlangkemper.nl/2020/04/29/combine-two-word-lists-for-cracking-passwords/
