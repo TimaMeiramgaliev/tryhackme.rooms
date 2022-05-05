@@ -91,8 +91,89 @@ Type `python3 hash-id.py` and paste hash
 
 #### Perform a dictionary attack against the following hash: 8d6e34f987851aa599257d3831a1af040886842f. What is the cracked value? Use rockyou.txt wordlist.
 
-#### Answer:
+To perform dictionary attack firstly we need to identify hash type. We already know, that hash type is `SHA-1`.
+Let's use `John the ripper`, here the simple usage
+
+john --wordlist=[path to wordlist file] --format=[hash format] [path to hash]
+Can save our hash in hash1.txt
+echo '8d6e34f987851aa599257d3831a1af040886842f' > hash1.txt
+Now, we have txt file with hash and we know hash format, we can run `john the ripper`
+
+`john --wordlist=/usr/share/wordlists/rockyou.txt --format=Raw-MD5 hash1.txt`
+
+![Screenshot_20220505_182055](https://user-images.githubusercontent.com/86546994/166921724-54a7d397-99db-4a2e-9f25-5e4940c6f649.png)
+
+P.s if you crack this hash first time, result will appear in terminal. After cracking same hash will show no result. To see, type john --show=[hash format] [path to hash]
+
+#### Answer: sunshine
 
 #### Perform a brute-force attack against the following MD5 hash: e48e13207341b6bffb7fb1622282247b. What is the cracked value? Note the password is a 4 digit number: [0-9][0-9][0-9][0-9]
 
-#### Answer:
+Let's john the ripper again. You know steps, just reminder!
+
+1. Save hash to txt file
+
+2. Identify hash type
+
+3. Run the command `john --wordlist=[path to wordlist file] --format=[hash format] [path to hash]`
+
+![Screenshot_20220505_182734](https://user-images.githubusercontent.com/86546994/166922763-aa8b976a-93fa-4ebe-b562-c7f9fa32d429.png)
+
+#### Answer: 1337
+
+## [TASK 6] Offline Attacks - Rule-Based
+#### Rule-Based
+A rule-based password attack is a way of focusing a password cracking technique when an attacker knows which rules passwords in a particular system are based on, such as alphanumeric and eight characters long.
+For this attack, we can use either hashcat or John the ripper.
+
+`Az represents a single word from the original wordlist/dictionary using -p.
+
+"[0-9]" append a single digit (from 0 to 9) to the end of the word. For two digits, we can add "[0-9][0-9]"  and so on.  
+
+^[!@#$] add a special character at the beginning of each word. ^ means the beginning of the line/word. Note, changing ^ to $ will append the special characters to the end of the line/word.`
+
+#### What would the syntax you would use to create a rule to produce the following: "S[Word]NN  where N is Number and S is a symbol of !@? 
+
+#### Answer:  Az"[0-9][0-9]" ^[!@]
+
+#### [TASK 7] Deploy the VM
+`cewl -m 8 -w clinic.lst https://clinic.thmredteam.com/` run to create custom wordlit
+
+#### [TASK 8] Online password attacks 
+Online password attacks include procesess of guessing password of networked services like SSH, SNMP, FTP, POP3 and etc.
+
+For this tasks we will use famous `Hydra` tool.
+
+#### FTP
+`hydra -L [path to username.txt] -P [path to password.txt] ftp://[IP]`
+
+#### SMTP
+`hydra -L [path to username.txt] -P [path to password.txt] smtp://[IP]`
+
+#### SSH
+`hydra -L [path to username.txt] -P [path to password.txt] ssh://[IP] -v`
+
+
+#### Can you guess the FTP credentials without brute-forcing? What is the flag?
+Go to website with default password lists - https://datarecovery.com/rd/default-passwords/
+Here we need to find username and password related to ftp.
+There are different default password, try all of them!
+
+![Screenshot_20220505_195359](https://user-images.githubusercontent.com/86546994/166938685-82849f8a-9bfe-4dd7-9ae7-bbc8b4b701d8.png)
+
+username: ftp and password: ftp looks suitable.
+
+![Screenshot_20220505_195545](https://user-images.githubusercontent.com/86546994/166938885-8ead3aaf-232f-4758-ae79-f01d5d3e9c85.png)
+
+After connection, go to `Files` directory and type `get flag.txt` to copy file to your local machine.
+
+#### Answer THM{d0abe799f25738ad739c20301aed357b}
+
+
+#### In this question, you need to generate a rule-based dictionary from the wordlist clinic.lst in the previous task. email: pittman@clinic.thmredteam.com against 10.10.200.112:25 (SMTP).
+#### What is the password? Note that the password format is as follows: [symbol][dictionary word][0-9][0-9].
+
+We know how to create rules-based dictionary using `john the ripper`.
+
+
+ANSWER: 
