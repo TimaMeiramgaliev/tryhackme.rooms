@@ -175,5 +175,10 @@ After connection, go to `Files` directory and type `get flag.txt` to copy file t
 
 We know how to create rules-based dictionary using `john the ripper`.
 
+In /etc/john/john.conf we should write our created rule
 
+
+![Screenshot_20220512_181354](https://user-images.githubusercontent.com/86546994/168072289-5d3fb40e-f8aa-4777-8b4d-be3a59b37aa5.png)
+
+Now, we can create a wordlist using our wordlist 
 ANSWER: 
