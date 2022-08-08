@@ -96,8 +96,12 @@ You can easily jump to specific packets with one of the menu items in the Go men
 
 #### Search the "r4w" string in packet details. What is the name of artist 1?
 
+Press ctrl + f and type r4w, it will give the required information
 
-#### Answer: 
+![Screenshot_20220808_141044](https://user-images.githubusercontent.com/86546994/183371042-a638abb6-e739-4d80-8e5f-3cd19ff80bdb.png)
+
+
+#### Answer: r4w8173
 
 #### Go to packet 12 and read the comments. What is the answer?
 Go to the Edit->Packet comment and read given comment.
@@ -107,152 +111,66 @@ Go to the Edit->Packet comment and read given comment.
 
 
 As the comment we have the tip to go to packet 39765 and do some actions in order to find flag.
-
-In order to specify `@` charachter in a list, we should follow this options:
-`    , for all uppercase letters
-    @ for all lowercase letters
-    % for all numeric characters
-    ^ for all special characters`
-`5 5` -> represents the length of generated words
-`-t` option -> to use specific pattern
-
-![Screenshot_20220504_183221](https://user-images.githubusercontent.com/86546994/166684097-d4691e3e-cc1a-41cf-8836-41b9bd6cd90d.png)
-
-#### Answer: crunch 5 5 -t "THM^! " -o tryhackme.txt
-
-## [TASK 5] Offline Attacks - Dictionary and Brute-Force
-#### Dictionary attack
-A dictionary attack is a method of guessing password by systematically entering every word in a dictionary as a password. 
-
-#### Brute-Force attack
-A brute force attack uses trial-and-error to guess login info, encryption keys, or find a hidden web page. This method is used to guess the victim's password by sending standard password combinations.
-
-Usefull tools: hashcat, john the ripper
-
-#### Considering the following hash: 8d6e34f987851aa599257d3831a1af040886842f. What is the hash type?
-To identify hash type we can use different tools, I prefer to use `hash id`. You can download it from github - https://github.com/blackploit/hash-identifier.
-Type `python3 hash-id.py` and paste hash
-
-![Screenshot_20220504_185846](https://user-images.githubusercontent.com/86546994/166686381-cb0bfa3c-29e2-4c55-a56e-53fd58e19087.png)
-
-#### Answer: SHA-1
-
-#### Perform a dictionary attack against the following hash: 8d6e34f987851aa599257d3831a1af040886842f. What is the cracked value? Use rockyou.txt wordlist.
-
-To perform dictionary attack firstly we need to identify hash type. We already know, that hash type is `SHA-1`.
-Let's use `John the ripper`, here the simple usage
-
-john --wordlist=[path to wordlist file] --format=[hash format] [path to hash]
-Can save our hash in hash1.txt
-echo '8d6e34f987851aa599257d3831a1af040886842f' > hash1.txt
-Now, we have txt file with hash and we know hash format, we can run `john the ripper`
-
-`john --wordlist=/usr/share/wordlists/rockyou.txt --format=Raw-MD5 hash1.txt`
-
-![Screenshot_20220505_182055](https://user-images.githubusercontent.com/86546994/166921724-54a7d397-99db-4a2e-9f25-5e4940c6f649.png)
-
-P.s if you crack this hash first time, result will appear in terminal. After cracking same hash will show no result. To see, type john --show=[hash format] [path to hash]
-
-#### Answer: sunshine
-
-#### Perform a brute-force attack against the following MD5 hash: e48e13207341b6bffb7fb1622282247b. What is the cracked value? Note the password is a 4 digit number: [0-9][0-9][0-9][0-9]
-
-Let's john the ripper again. You know steps, just reminder!
-
-1. Save hash to txt file
-
-2. Identify hash type
-
-3. Run the command `john --wordlist=[path to wordlist file] --format=[hash format] [path to hash]`
-
-![Screenshot_20220505_182734](https://user-images.githubusercontent.com/86546994/166922763-aa8b976a-93fa-4ebe-b562-c7f9fa32d429.png)
-
-#### Answer: 1337
-
-## [TASK 6] Offline Attacks - Rule-Based
-#### Rule-Based
-A rule-based password attack is a way of focusing a password cracking technique when an attacker knows which rules passwords in a particular system are based on, such as alphanumeric and eight characters long.
-For this attack, we can use either hashcat or John the ripper.
-
-`Az represents a single word from the original wordlist/dictionary using -p.
-
-"[0-9]" append a single digit (from 0 to 9) to the end of the word. For two digits, we can add "[0-9][0-9]"  and so on.  
-
-^[!@#$] add a special character at the beginning of each word. ^ means the beginning of the line/word. Note, changing ^ to $ will append the special characters to the end of the line/word.`
-
-#### What would the syntax you would use to create a rule to produce the following: "S[Word]NN  where N is Number and S is a symbol of !@? 
-
-#### Answer:  Az"[0-9][0-9]" ^[!@]
-
-#### [TASK 7] Deploy the VM
-`cewl -m 8 -w clinic.lst https://clinic.thmredteam.com/` run to create custom wordlit
-
-#### [TASK 8] Online password attacks 
-Online password attacks include procesess of guessing password of networked services like SSH, SNMP, FTP, POP3 and etc.
-
-For this tasks we will use famous `Hydra` tool.
-
-#### FTP
-`hydra -L [path to username.txt] -P [path to password.txt] ftp://[IP]`
-
-#### SMTP
-`hydra -L [path to username.txt] -P [path to password.txt] smtp://[IP]`
-
-#### SSH
-`hydra -L [path to username.txt] -P [path to password.txt] ssh://[IP] -v`
+Easiest way is opening File->Export Objects->HTTP and directly download the JPEG image
+After in terminal we can convert it to MD5 Hash using 'md5sum [file name]'
 
 
-#### Can you guess the FTP credentials without brute-forcing? What is the flag?
-Go to website with default password lists - https://datarecovery.com/rd/default-passwords/
-Here we need to find username and password related to ftp.
-There are different default password, try all of them!
-
-![Screenshot_20220505_195359](https://user-images.githubusercontent.com/86546994/166938685-82849f8a-9bfe-4dd7-9ae7-bbc8b4b701d8.png)
-
-username: ftp and password: ftp looks suitable.
-
-![Screenshot_20220505_195545](https://user-images.githubusercontent.com/86546994/166938885-8ead3aaf-232f-4758-ae79-f01d5d3e9c85.png)
-
-After connection, go to `Files` directory and type `get flag.txt` to copy file to your local machine.
-
-#### Answer THM{d0abe799f25738ad739c20301aed357b}
+![Screenshot_20220808_133806](https://user-images.githubusercontent.com/86546994/183365035-bda21fba-792b-4369-a47d-b17dbf76267a.png)
 
 
-#### In this question, you need to generate a rule-based dictionary from the wordlist clinic.lst in the previous task. email: pittman@clinic.thmredteam.com against 10.10.200.112:25 (SMTP).
-#### What is the password? Note that the password format is as follows: [symbol][dictionary word][0-9][0-9].
-
-We know how to create rules-based dictionary using `john the ripper`.
-
-In /etc/john/john.conf we should write our created rule
+#### Answer: 911cd574a42865a956ccde2d04495ebf
 
 
-![Screenshot_20220512_181354](https://user-images.githubusercontent.com/86546994/168072289-5d3fb40e-f8aa-4777-8b4d-be3a59b37aa5.png)
+#### There is a ".txt" file inside the capture file. Find the file and read it; what is the alien's name?
+Using the same method we can download txt file or whatever we need. The file name is 'Note.txt', if we open it, we will find exact solution.
 
-Now, we can create a wordlist using our wordlist 
+#### Answer: PACKETMASTER
 
-`john --wordlist=clinic.lst --rules=[Rule name] --stdout > [File where you want to save]`
 
-run the bruteforce attack using generated password
+#### Look at the expert info section. What is the number of warnings?
+To open Expert info go to Analyze->Expert Information. (Note: Disable group by summary option)
 
-`hydra -l pittman@clinic.thmredteam.com -P [generated list] smtp://[IP]:25`
 
-#### ANSWER: !multidisciplinary00
+![Screenshot_20220808_134607](https://user-images.githubusercontent.com/86546994/183366504-cd3d2c20-dc12-4b96-8e2f-ae47a62bc6ae.png)
 
-#### Perform a brute-forcing attack against the phillips account for the login page at http://10.10.187.109/login-get using hydra? What is the flag?
 
-as a password list, we gonna use clinic.lst
-Here you can more about brute forcing login pages - https://russianblogs.com/article/1635894923/
-`hydra -l phillips -P clinic.lst 10.10.6.182 http-get-form "/login-get/index.php:username=phillips&password=^PASS^:S=logout.php" -f`
+#### Answer: 1636
 
-#### ANSWER: Paracetamol
+## [TASK 5] Packet Filtering 
+#### Packet Filtering 
+Wireshark has two filtering languages: capture filters and display filters. Capture filters are used for filtering when capturing packets and are discussed in Section 4.10, “Filtering while capturing”. Display filters are used for filtering which packets are displayed and are discussed below. For more information about display filter syntax, see the wireshark-filter(4) man page. https://www.wireshark.org/docs/man-pages/wireshark-filter.html
+https://www.wireshark.org/docs/wsug_html_chunked/ChCapCaptureFilterSection.html
 
-#### Perform a rule-based password attack to gain access to the burgess account. Find the flag at the following website: http://10.10.6.182/login-post/. What is the flag?
+#### Go to packet number 4. Right-click on the "Hypertext Transfer Protocol" and apply it as a filter. 
+You already know how to move through packets, open the packet number 4 and apply as a filter Hypertext Transfer Protocol
 
-#### Note: use the clinic.lst dictionary in generating and expanding the wordlist!
+![Screenshot_20220808_135426](https://user-images.githubusercontent.com/86546994/183368176-9a6edfe5-deb9-44ee-932c-8897f91a322a.png)
 
-we should crate new list using default john the ripper rule - Single-Extra
-`john --wordlist=clinic.lst --rules=Single-Extra --stdout > [File where you want to save]`
-And run the command
-`hydra -l burgess -P generated list [IP] http-post-form "/login-post/index.php:username=burgess&password=^PASS^:S=logout.php" -f`
 
-#### Answer: OxytocinnicotyxO
+#### Answer: http
+
+
+#### What is the number of displayed packets?
+
+Open Statistics->Capture File Properties
+
+#### Answer: 1089
+
+#### Go to packet number 33790 and follow the stream. What is the total number of artists?
+Go to the packet 33790 right click on it and Follow HTTP Stream.
+By analyzing packet you will understand that there is only 3 artist
+#### Answer: 3
+
+
+#### What is the name of the second artist?
+Use as filter 'artist=2'
+
+
+![Screenshot_20220808_140633](https://user-images.githubusercontent.com/86546994/183370254-0a15bf8a-3d02-4179-a5b0-62690b991f71.png)
+
+
+#### Answer: Blad3
+
+## [TASK 6] Conclusion 
+#### Conclusion
+Congratulations! You just finished the "Wireshark: The Basics" room. In this room, we covered Wireshark, what it is, how it operates, and how to use it to investigate traffic captures. 
