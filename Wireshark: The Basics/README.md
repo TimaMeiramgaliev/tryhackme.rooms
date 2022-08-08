@@ -21,57 +21,92 @@ Developers use it to debug protocol implementations
 People use it to learn network protocol internals 
 
 #### Read the "capture file comments". What is the flag?
-#### Answer: Password cracking
+Statistics->Capture File Properties
+
+
+![Screenshot_20220808_064946](https://user-images.githubusercontent.com/86546994/183318598-7cb1fb82-ad7f-439c-ad93-1d994aa0e15e.png)
+
+
+#### Answer: TryHackMe_Wireshark_Demo 
 
 #### What is the total number of packets?
-To find all packets you can scroll down or just open Statistics->Capture File Properties
+To find all packets you can scroll down till the end and find last packet or just open Statistics->Capture File Properties
 ![Screenshot_20220808_062328](https://user-images.githubusercontent.com/86546994/183318015-079f9a9b-d752-43c1-b176-45714a6a9f4d.png) 
 
-#### Answer: Password cracking
+#### Answer: 58620
 
 #### What is the SHA256 hash value of the capture file?
-#### Answer: Password cracking
-
-## [TASK 3] Password Profiling #1 - Default, Weak, Leaked, Combined , and Username Wordlists
-#### Default passwords
-Sometimes it's good practice to use the default password to break into a service. A default password is a standard pre-configured password for a device. Such passwords are the default configuration for many devices and, if unchanged, present a serious security risk. Examples: admin, 123, root. Very often the default password is found in routers and virtual machines. Website that provide default passwords: https://cirt.net/passwords
-
-#### Weak Passwords
-A weak password is short, common, a system default, or something that could be rapidly guessed by executing a brute force attack using a subset of all possible passwords, such as words in the dictionary, proper names, words based on the user name or common variations on these themes.
-
-#### Leaked Passwords
-Leaked password database is an aggregated collection of login credentials known to have been exposed. As new breaches and leaks occur, security researchers work to discover data breaches to add and process compromised credentials. Famous rockyou.txt comes from data breach occured in December 2009, when the company "RockYou" experienced a data breach resulting in the exposure of over 32 million user accounts. There are many different sites where you can check for leaked passwords. https://www.avast.com/hackcheck#pc
-
-#### Combined wordlists
-To crack passwords, it is sometimes useful to combine word lists in a way that concatenates words from multiple lists. More information about combined wordlists in the article - https://www.sjoerdlangkemper.nl/2020/04/29/combine-two-word-lists-for-cracking-passwords/
-
-#### Customized Wordlists
-Beginners learning brute-forcing attacks against WPA handshakes are often let down by the limitations of default wordlists like RockYou based on stolen passwords. The science of brute-forcing goes beyond using these default lists, allowing us to be more efficient by making customized wordlists. There are a number of options for creating wordlists besides a simple dictionary, and the one we'll explore today is Common User Passwords Profiler (or CUPP). A lightweight, simple Python program, CUPP is capable of generating an impressive seed of personalized password guesses. Other tools, like CeWL, allow for target websites to be scraped for unique words in order to use words that are common across the organization. Information how to create custom wodlists with CeWL - https://null-byte.wonderhowto.com/how-to/hack-like-pro-crack-passwords-part-5-creating-custom-wordlist-with-cewl-0158855/
-
-#### Username Wordlists
-Very often, users use their names or initials as logins and passwords. Once you have users, you can use the tools by creating your own list of usernames. Doing it manually would be a waste of time, instead we can use a ready-made tool written in python, here is the link - https://github.com/shroudri/username_generator
-
-#### What is the Juniper Networks ISG 2000 default password?
-Visit the website with default passwords list https://default-password.info/ and search for Juniper. Go to ISG2000 directory and press "show me" button.
-
-![Screenshot_20220504_170722](https://user-images.githubusercontent.com/86546994/166671711-05747d68-e29f-495d-baea-1ea570d75825.png)
-
-#### Answer: netscreen:netscreen
+Again open Statistics->Capture File Properties 
 
 
-## [TASK 4] Password Profiling #2 - Keyspace Technique and CUPP
-#### Keyspace Technique
-What can we do in case when we want to create a wordlists which wil depend on specified rules like: range of characters, numbers, symbols, digits. Helpfull utility for us will be crunch. Crunch is a wordlist generator where you can specify a standard character set or any set of characters to be used in generating the wordlists. The wordlists are created through combination and permutation of a set of characters. You can determine the amount of characters and list size. Here some examples of using crunch - https://www.geeksforgeeks.org/kali-linux-crunch-utility/
+![Screenshot_20220808_064722](https://user-images.githubusercontent.com/86546994/183318455-2e1cd62e-8f3a-473d-babc-cb7d40e482dc.png)
+#### Answer: f446de335565fb0b0ee5e5a3266703c778b2f3dfad7efeaeccb2da5641a6d6eb
 
-#### CUPP - Common User Passwords Profiler
-UPP tool is an automated script written in the python language that interacts with the user and answers some fundamental questions about the victim like Name, Company Name, Partner’s Name, etc. After analyzing these answers, the CUPP tool generates some possible Usernames+Password words that attackers can use for various attacks like Password Cracking and Brute-Forcing. More information - https://www.geeksforgeeks.org/cupp-common-user-passwords-profiler/
+## [TASK 3] Packet Dissection 
+#### Packet Dissection 
+Packet dissection is also known as protocol dissection, which investigates packet details by decoding available protocols and fields
 
-#### Run the following crunch command:crunch 2 2 01234abcd -o crunch.txt. How many words did crunch generate?
-After running `crunch 2 2 01234abcd -o crunch.txt` command we will see crunch.txt text file. To count generated words in crunch.txt we can use `wc` command with `-w` option
-![Screenshot_20220504_181136](https://user-images.githubusercontent.com/86546994/166678770-dabd1469-20f2-4eb0-998a-8709c5ed0565.png)
-#### Answer: 81
+#### Packet Details
+You can click on a packet in the packet list pane to open its details (double-click will open details in a new window). Packets consist of 5 to 7 layers based on the OSI model. We will go over all of them in an HTTP packet from a sample capture. The picture below shows viewing packet number 27.
 
-#### What is the crunch command to generate a list containing THM@! and output to a filed named tryhackme.txt?
+#### View packet number 38. Which markup language is used under the HTTP protocol? 
+So, open the packet witrh number 38 and see some details
+
+![Screenshot_20220808_065736](https://user-images.githubusercontent.com/86546994/183319073-ea3787b6-91e7-4ecd-8868-87b7c691f4bf.png)
+
+
+#### Answer: eXtensible Markup Language
+
+#### What is the arrival date of the packet? (Answer format: Month/Day/Year)
+In The Frame (Layer 1) you can find specific details related to Physical Layer of OSI model
+
+![Screenshot_20220808_065955](https://user-images.githubusercontent.com/86546994/183319251-a6a753aa-96c0-4952-8610-6c7bd1e16e80.png)
+
+
+#### Answer: 05/13/2004
+
+#### What is TTL value?
+Information related to time to live we can find in IP layer
+
+![Screenshot_20220808_070415](https://user-images.githubusercontent.com/86546994/183319496-16dbf3b1-2e55-4939-b8bd-450443cb523c.png)
+
+
+#### Answer: 47
+
+
+#### What is the TCP payload size?
+By looking at Reassembled TCP Segments we can find our 38 number packet with its payload size
+
+![Screenshot_20220808_070731](https://user-images.githubusercontent.com/86546994/183319708-8455ffe9-6641-48c3-b604-0b37caf1e220.png)
+
+
+#### Answer: 424
+
+#### What is the e-tag value&
+Open Hypertext Transfer Protocol->Http/1.1 200 OK\r\n->Expert Info, here you will find information about E-tag
+
+#### Answer: 9a01a-4696-7e354b00
+
+## [TASK 4] Packet Navigation 
+#### Packet Numbers
+Wireshark calculates the number of investigated packets and assigns a unique number for each packet. More about this - https://www.wireshark.org/docs/wsug_html_chunked/ChUsePacketListPaneSection.html
+
+#### Go to Packet
+You can easily jump to specific packets with one of the menu items in the Go menu using packet unique number.
+
+#### Search the "r4w" string in packet details. What is the name of artist 1?
+
+
+#### Answer: 
+
+#### Go to packet 12 and read the comments. What is the answer?
+Go to the Edit->Packet comment and read given comment.
+
+
+![Screenshot_20220808_073523](https://user-images.githubusercontent.com/86546994/183321626-08604e2b-afb4-4e74-af76-212180399c1a.png)
+
+
+As the comment we have the tip to go to packet 39765 and do some actions in order to find flag.
 
 In order to specify `@` charachter in a list, we should follow this options:
 `    , for all uppercase letters
@@ -221,35 +256,3 @@ And run the command
 `hydra -l burgess -P generated list [IP] http-post-form "/login-post/index.php:username=burgess&password=^PASS^:S=logout.php" -f`
 
 #### Answer: OxytocinnicotyxO
-
-#### [TASK 9] Password spray attack 
-In this attack, an attacker will brute force logins based on list of usernames with default passwords on the application. For example, an attacker will use one password (say, Secure@123) against many different accounts on the application to avoid account lockouts that would normally occur when brute forcing a single account with many passwords.
-
-#### Perform a password spraying attack to get access to the SSH://10.10.6.182 server to read /etc/flag. What is the flag?
-
-The password format is season+ year + special character, so we need to randomly choose passwords and try to login
-First, lets create a file with usernames like
-admin
-victim
-dummy
-adm
-sammy
-phillips
-burgess
-
-And now, try to login with random pass
-`hydra -L [username list] -p Fall2021@ ssh://[IP]`
-
-After some tries, find that password is Fall2021@
-
-![Screenshot_20220515_135551](https://user-images.githubusercontent.com/86546994/168463016-179560bd-3e37-4f46-a022-25f260f8a377.png)
-
-#### Answer: THM{a97a26e86d09388bbea148f4b870277d}
-
-#### [TASK 10] Summary
-Topics of this room
-    Default, weak, leaked combined wordlists
-    Password profiling
-    Offline password attacks
-    Online password attacks
-
