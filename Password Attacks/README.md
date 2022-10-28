@@ -16,7 +16,7 @@ Password Cracking vs. Password Guessing
 This section discusses password cracking terminology from a cybersecurity perspective. Also, we will discuss significant differences between password cracking and password guessing. Finally, we'll demonstrate various tools used for password cracking, including Hashcat and John the Ripper.
 
 #### Which type of password attack is performed locally?
-#### Answer: Password cracking
+#### Answer: 
 
 
 ## [TASK 3] Password Profiling #1 - Default, Weak, Leaked, Combined , and Username Wordlists
@@ -43,7 +43,7 @@ Visit the website with default passwords list https://default-password.info/ and
 
 ![Screenshot_20220504_170722](https://user-images.githubusercontent.com/86546994/166671711-05747d68-e29f-495d-baea-1ea570d75825.png)
 
-#### Answer: 
+#### : 
 
 
 ## [TASK 4] Password Profiling #2 - Keyspace Technique and CUPP
@@ -105,7 +105,7 @@ Now, we have txt file with hash and we know hash format, we can run `john the ri
 
 P.s if you crack this hash first time, result will appear in terminal. After cracking same hash will show no result. To see, type john --show=[hash format] [path to hash]
 
-#### Answer: sunshine
+#### Answer: 
 
 #### Perform a brute-force attack against the following MD5 hash: e48e13207341b6bffb7fb1622282247b. What is the cracked value? Note the password is a 4 digit number: [0-9][0-9][0-9][0-9]
 
@@ -119,7 +119,7 @@ Let's john the ripper again. You know steps, just reminder!
 
 ![Screenshot_20220505_182734](https://user-images.githubusercontent.com/86546994/166922763-aa8b976a-93fa-4ebe-b562-c7f9fa32d429.png)
 
-#### Answer: 1337
+#### Answer: 
 
 ## [TASK 6] Offline Attacks - Rule-Based
 #### Rule-Based
@@ -134,7 +134,7 @@ For this attack, we can use either hashcat or John the ripper.
 
 #### What would the syntax you would use to create a rule to produce the following: "S[Word]NN  where N is Number and S is a symbol of !@? 
 
-#### Answer:  Az"[0-9][0-9]" ^[!@]
+#### Answer:  
 
 #### [TASK 7] Deploy the VM
 `cewl -m 8 -w clinic.lst https://clinic.thmredteam.com/` run to create custom wordlit
@@ -167,7 +167,7 @@ username: ftp and password: ftp looks suitable.
 
 After connection, go to `Files` directory and type `get flag.txt` to copy file to your local machine.
 
-#### Answer THM{d0abe799f25738ad739c20301aed357b}
+#### Answer 
 
 
 #### In this question, you need to generate a rule-based dictionary from the wordlist clinic.lst in the previous task. email: pittman@clinic.thmredteam.com against 10.10.200.112:25 (SMTP).
@@ -188,7 +188,7 @@ run the bruteforce attack using generated password
 
 `hydra -l pittman@clinic.thmredteam.com -P [generated list] smtp://[IP]:25`
 
-#### ANSWER: !multidisciplinary00
+#### ANSWER: 
 
 #### Perform a brute-forcing attack against the phillips account for the login page at http://10.10.187.109/login-get using hydra? What is the flag?
 
@@ -196,7 +196,7 @@ as a password list, we gonna use clinic.lst
 Here you can more about brute forcing login pages - https://russianblogs.com/article/1635894923/
 `hydra -l phillips -P clinic.lst 10.10.6.182 http-get-form "/login-get/index.php:username=phillips&password=^PASS^:S=logout.php" -f`
 
-#### ANSWER: Paracetamol
+#### ANSWER: 
 
 #### Perform a rule-based password attack to gain access to the burgess account. Find the flag at the following website: http://10.10.6.182/login-post/. What is the flag?
 
@@ -207,7 +207,7 @@ we should crate new list using default john the ripper rule - Single-Extra
 And run the command
 `hydra -l burgess -P generated list [IP] http-post-form "/login-post/index.php:username=burgess&password=^PASS^:S=logout.php" -f`
 
-#### Answer: OxytocinnicotyxO
+#### Answer: 
 
 #### [TASK 9] Password spray attack 
 In this attack, an attacker will brute force logins based on list of usernames with default passwords on the application. For example, an attacker will use one password (say, Secure@123) against many different accounts on the application to avoid account lockouts that would normally occur when brute forcing a single account with many passwords.
@@ -231,7 +231,7 @@ After some tries, find that password is Fall2021@
 
 ![Screenshot_20220515_135551](https://user-images.githubusercontent.com/86546994/168463016-179560bd-3e37-4f46-a022-25f260f8a377.png)
 
-#### Answer: THM{a97a26e86d09388bbea148f4b870277d}
+#### Answer: 
 
 #### [TASK 10] Summary
 Topics of this room
