@@ -43,7 +43,7 @@ Visit the website with default passwords list https://default-password.info/ and
 
 ![Screenshot_20220504_170722](https://user-images.githubusercontent.com/86546994/166671711-05747d68-e29f-495d-baea-1ea570d75825.png)
 
-#### Answer: netscreen:netscreen
+#### Answer: 
 
 
 ## [TASK 4] Password Profiling #2 - Keyspace Technique and CUPP
@@ -56,7 +56,7 @@ UPP tool is an automated script written in the python language that interacts wi
 #### Run the following crunch command:crunch 2 2 01234abcd -o crunch.txt. How many words did crunch generate?
 After running `crunch 2 2 01234abcd -o crunch.txt` command we will see crunch.txt text file. To count generated words in crunch.txt we can use `wc` command with `-w` option
 ![Screenshot_20220504_181136](https://user-images.githubusercontent.com/86546994/166678770-dabd1469-20f2-4eb0-998a-8709c5ed0565.png)
-#### Answer: 81
+#### Answer: 
 
 #### What is the crunch command to generate a list containing THM@! and output to a filed named tryhackme.txt?
 
@@ -70,7 +70,7 @@ In order to specify `@` charachter in a list, we should follow this options:
 
 ![Screenshot_20220504_183221](https://user-images.githubusercontent.com/86546994/166684097-d4691e3e-cc1a-41cf-8836-41b9bd6cd90d.png)
 
-#### Answer: crunch 5 5 -t "THM^! " -o tryhackme.txt
+#### Answer: 
 
 ## [TASK 5] Offline Attacks - Dictionary and Brute-Force
 #### Dictionary attack
@@ -87,7 +87,7 @@ Type `python3 hash-id.py` and paste hash
 
 ![Screenshot_20220504_185846](https://user-images.githubusercontent.com/86546994/166686381-cb0bfa3c-29e2-4c55-a56e-53fd58e19087.png)
 
-#### Answer: SHA-1
+#### Answer: 
 
 #### Perform a dictionary attack against the following hash: 8d6e34f987851aa599257d3831a1af040886842f. What is the cracked value? Use rockyou.txt wordlist.
 
